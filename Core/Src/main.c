@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "ledctrl.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -97,7 +97,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  ledctrl_blinkled(10, 200);
+	  ledctrl_blinkled(8, 400);
+	  ledctrl_blinkled(6, 800);
+	  ledctrl_blinkled(4, 1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

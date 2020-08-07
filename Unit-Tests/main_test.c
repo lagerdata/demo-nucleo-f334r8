@@ -18,6 +18,8 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include "unity.h"
+#include "test_ledctrl.h"
 #include "main_test.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -56,7 +58,15 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void setUp(void)
+{
 
+}
+
+void tearDown(void)
+{
+
+}
 /* USER CODE END 0 */
 
 /**
@@ -87,9 +97,15 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART2_UART_Init();
+  //MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  UnityBegin("modules/ledctrl.c");
+  DO_TEST(test_check_min_number_blinks);
+  DO_TEST(test_check_max_number_blinks);
+  DO_TEST(test_check_min_blink_duration);
+  DO_TEST(test_check_max_blink_duration);
+  DO_TEST(test_total_blink_length);
+  UnityEnd();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -156,7 +172,7 @@ void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 38400;
+  huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;

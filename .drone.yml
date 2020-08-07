@@ -1,0 +1,33 @@
+kind: pipeline
+type: docker
+name: default
+
+clone:
+  git:
+    image: plugins/git
+    recursive: true
+
+steps:
+- name: submodules
+  image: alpine/git
+  commands:
+  - git submodule update --init --recursive
+
+- name: build
+  image: lagerdata/devenv-cortexm-stm32
+  commands:
+  - ln -s /drone/src /app
+  - lager exec build
+
+- name: flash
+  image: lagerdata/devenv-cortexm-stm32
+
+  commands:
+  - lager connect --device stm32l4x --interface stlink --transport swd --speed 480 --force
+  - lager testrun --serial-device /dev/ttyACM0 --hexfile Test/demo-b-l475e-iot01a1_test.hex --test-runner unity
+  - lager flash --hexfile demo-b-l475e-iot01a1.hex
+  - lager run
+
+trigger:
+  branch:
+  - master
