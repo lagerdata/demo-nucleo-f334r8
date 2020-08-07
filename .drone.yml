@@ -23,9 +23,9 @@ steps:
   image: lagerdata/devenv-cortexm-stm32
 
   commands:
-  - lager connect --device stm32l4x --interface stlink --transport swd --speed 480 --force
-  - lager testrun --serial-device /dev/ttyACM0 --hexfile Test/demo-b-l475e-iot01a1_test.hex --test-runner unity
-  - lager flash --hexfile demo-b-l475e-iot01a1.hex
+  - lager connect --device stm32f3x --interface stlink --transport swd --speed 480 --force
+  - lager testrun --serial-device /dev/ttyACM0 --hexfile Test/demo-nucleo-f334r8_test.hex --test-runner unity
+  - lager flash --hexfile Release/demo-nucleo-f334r8.hex
   - lager run
 
 trigger:
