@@ -6,4 +6,7 @@ mount_dir = /app
 shell = /bin/bash
 cmd.build = headless-build.sh -build demo-nucleo-f334r8 -importAll /app
 cmd.clean = rm -rf Debug;rm -rf Release;rm -rf Test
+cmd.connect = lager connect --device stm32f3x --interface stlink --transport swd --speed 480
+cmd.cmake-build = mkdir -p _build;cd _build; cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-toolchain.cmake;cmake --build .
+cmd.cmake-clean = rm -rf _build
 
