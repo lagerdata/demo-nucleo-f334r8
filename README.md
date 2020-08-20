@@ -31,7 +31,7 @@ To create a new build command run:
 `lager exec --command "user defined build command" --save-as user-defined-shortcut `  
 
 For example, to build this project using the STM32CUBEIDE's gcc compiler a user can define the following:  
-`lager exec --command "headless-build.sh -build demo-b-l475e-iot01a1 -importAll /app" --save-as my_build_cmd`  
+`lager exec --command "headless-build.sh -build demo-nucleo-f334r8 -importAll /app" --save-as my_build_cmd`  
 Moving forward a user could then run `lager exec my_build_cmd`  
 
 
@@ -44,9 +44,9 @@ There are two options to do this:
 
   
 Then run:  
-`lager connect --device stm32l4x --interface stlink --transport swd --speed 480`  
+`lager connect --device stm32f3x --interface stlink --transport swd --speed 480`  
 or if using built-in debug probe  
-`lager connect --device stm32l4x --interfact ftdi --transport swd --speed 480`  
+`lager connect --device stm32f3x --interfact ftdi --transport swd --speed 480`  
   
 #### Flash Image
 To flash the board with the project application run the following:  
@@ -56,7 +56,7 @@ To execute the program run:
 
 ## Unit Tests
 To run an example unit-test for this project run the following:  
-`lager testrun --serial-device /dev/ttyACM0 --hexfile Test/demo-b-l475e-iot01a1_test.hex`  
+`lager testrun --serial-device /dev/ttyACM0 --hexfile Test/demo-nucleo-f334r8_test.hex`  
 The results of the individual tests will be streamed back to the terminal.  
   
 ## Drone Setup
