@@ -17,7 +17,7 @@ Before experimenting with this project there are a couple of pre-requisites
 ## Build Instructions
 A Lager environment with build instructions is included in this repository.  
 To build the project simply run:  
-`lager exec build`  
+`lager exec cmake-build`  
 This will build all the targets in this project.  
 To see the different build options run:  
 `lager devenv commands`  
@@ -25,7 +25,7 @@ If you would like to create a development environment from scratch do the follow
 `lager devenv delete` This deletes the current development environment  
 `lager devenv create` This creates a new development environment.  
 This will instruct users to choose a development environment image (e.g. cortex-m, stm32, ti, etc), where to mount their project in the docker container, and what shell type to use. For this project the default settings are OK.  
-*Note: Search "lagerdata" on hub.docker.com to view other development environments supported by Lager*  
+*Note: Go to https://hub.docker.com/u/lagerdata to view other development environments supported by Lager*  
   
 To create a new build command run:  
 `lager exec --command "user defined build command" --save-as user-defined-shortcut `  
