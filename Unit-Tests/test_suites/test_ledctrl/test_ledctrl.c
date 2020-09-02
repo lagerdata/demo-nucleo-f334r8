@@ -33,7 +33,7 @@
 void test_check_min_number_blinks(void)
 {
 	uint32_t num_blink = 0;
-	uint32_t ms_blink_duration = 1000;
+	uint32_t ms_blink_duration = 100;
 	int32_t ret = ledctrl_blinkled(num_blink, ms_blink_duration);
 	TEST_ASSERT_EQUAL_INT(LEDCTRL_ERR, ret);
 	num_blink = 1;
@@ -47,7 +47,7 @@ void test_check_min_number_blinks(void)
 void test_check_max_number_blinks(void)
 {
 	uint32_t num_blink = 10;
-	uint32_t ms_blink_duration = 1000;
+	uint32_t ms_blink_duration = 100;
 	int32_t ret = ledctrl_blinkled(num_blink, ms_blink_duration);
 	TEST_ASSERT_EQUAL_INT(LEDCTRL_ERR, ret);
 	num_blink = 9;
