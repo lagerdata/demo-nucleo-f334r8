@@ -34,7 +34,7 @@ jobs:
           args: testrun --serial-device /dev/ttyACM0 --hexfile _build/Unit-Tests/test_suites/test_example/test-example.hex
 
       - name: Copy hex into LED test folder
-        run: cp _build/Core/app.hex system-tests/led_test
+        run: cp _build/Core/app.hex system-tests/led-test
 
       - name: LED Test
         uses: docker://lagerdata/lager-cli:v0.1.47
