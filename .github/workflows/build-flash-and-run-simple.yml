@@ -31,7 +31,7 @@ jobs:
           LAGER_SECRET_TOKEN: ${{ secrets.AKBAR_SECRET_TOKEN }}
         with:
           entrypoint: /usr/local/bin/lager
-          args: testrun --serial-device /dev/ttyACM0 --hexfile _build/unit-tests/test-suites/test-example/test-example.hex
+          args: testrun --serial-device /dev/ttyACM0 --hexfile _build/Unit-Tests/test_suites/test_example/test-example.hex
 
       - name: Copy hex into LED test folder
         run: cp _build/Core/app.hex system-tests/led_test
