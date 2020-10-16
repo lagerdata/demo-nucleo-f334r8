@@ -17,22 +17,32 @@ Before experimenting with this project there are a couple of pre-requisites
 ## Build Instructions
 A Lager environment with build instructions is included in this repository.  
 To build the project simply run:  
-`lager exec cmake-build`  
+`lager exec build`  
 This will build all the targets in this project.  
 To see the different build options run:  
 `lager devenv commands`  
 If you would like to create a development environment from scratch do the following:  
 `lager devenv delete` This deletes the current development environment  
 `lager devenv create` This creates a new development environment.  
-This will instruct users to choose a development environment image (e.g. cortex-m, stm32, ti, etc), where to mount their project in the docker container, and what shell type to use. For this project the default settings are OK.  
+This will instruct users to choose a development environment image (e.g. cortex-m, stm32, ti, etc), where to mount their project in the docker container, and what shell type to use. For this project the default settings are OK. 
+*Note: In order to use Github Actions you'll need to mount the repo into `/github/workspace` NOT the default `/app` 
 *Note: Go to https://hub.docker.com/u/lagerdata to view other development environments supported by Lager*  
   
 To create a new build command run:  
 `lager exec --command "user defined build command" --save-as user-defined-shortcut `  
 
-For example, to build this project using the STM32CUBEIDE's gcc compiler a user can define the following:  
-`lager exec --command "headless-build.sh -build demo-nucleo-f334r8 -importAll /app" --save-as my_build_cmd`  
-Moving forward a user could then run `lager exec my_build_cmd`  
+For example, to build this project using CMake + Ninja a user can define the following:  
+`lager exec --command "mkdir _build;cd _build;cmake .. -G Ninja;cmake --build ." --save-as build`  
+Moving forward a user could then run `lager exec build` 
+ 
+Similarly, to clean this project a user can define the following: 
+`lager exec --command "cd _build;ninja -t clean" --save-as clean` 
+And then run: 
+`lager exec clean` 
+
+Or to build this project using the STM32CUBEIDE's gcc compiler a user can define the following:  
+`lager exec --command "headless-build.sh -build demo-nucleo-f334r8 -importAll /app" --save-as stm-build`  
+Moving forward a user could then run `lager exec stm-build`  
 
 
 ## Flashing The Board
@@ -44,9 +54,9 @@ There are two options to do this:
 
   
 Then run:  
-`lager connect --device stm32f3x --interface stlink --transport swd --speed 480`  
+`lager connect --device stm32f3x --interface stlink --transport hla_swd --speed 480`  
 or if using built-in debug probe  
-`lager connect --device stm32f3x --interfact ftdi --transport swd --speed 480`  
+`lager connect --device stm32f3x --interfact ftdi --transport hla_swd --speed 480`  
   
 #### Flash Image
 To flash the board with the project application run the following:  
@@ -56,13 +66,15 @@ To execute the program run:
 
 ## Unit Tests
 To run an example unit-test for this project run the following:  
-`lager testrun --serial-device /dev/ttyACM0 --hexfile Test/demo-nucleo-f334r8_test.hex`  
+`lager testrun --serial-device /dev/ttyACM0 --hexfile _build/Unit-Tests/test_suites/test_example/test-example.hex`  
 The results of the individual tests will be streamed back to the terminal.  
   
-## Drone Setup
-To test Drone integration first make sure the demo repository is forked, then go to drone.app.lagerdata.com and 'Activate' the repository.  
-There is already a .drone.yml in the project. You can open it to examine which test images will be flashed to the board and run.  
-You can test a deploy by doing an empty commit, and then pushing to the remote repo.  
-`git commit --allow-empty`  
-`git push`  
-You can view progress of the deploy by going to drone.app.lagerdata.com, selecting the demo repository, clicking on the latest commit, and choosing "Activity Feed".  
+## Github Actions
+To setup a pipeline using Github Actions you need to have the folder structure `.github/workspace` at the top level of the repository. 
+Inside the workspace folder place a .yml file telling github how to build and run your project. 
+This demo includes a sample yml file that does the following: 
+1) Pull any submodules 
+2) Pull the desired docker image 
+3) Build the project using a build command defined in the .lager file
+4) Run a unit test using 
+5) Run a system test using lager python 
