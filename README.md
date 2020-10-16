@@ -25,8 +25,6 @@ If you would like to create a development environment from scratch do the follow
 `lager devenv delete` This deletes the current development environment  
 `lager devenv create` This creates a new development environment.  
 This will instruct users to choose a development environment image (e.g. cortex-m, stm32, ti, etc), where to mount their project in the docker container, and what shell type to use. For this project the default settings are OK. 
-
-
 *Note: In order to use Github Actions you'll need to mount the repo into `/github/workspace` NOT the default `/app`*  
 *Note: Go to https://hub.docker.com/u/lagerdata to view other development environments supported by Lager*  
   
@@ -62,7 +60,7 @@ or if using built-in debug probe
   
 #### Flash Image
 To flash the board with the project application run the following:  
-`lager flash --hexfile Release/demo-nucleo-f334r8.hex`  
+`lager flash --hexfile _build/Core/app.hex`  
 To execute the program run:  
 `lager run`  
 
