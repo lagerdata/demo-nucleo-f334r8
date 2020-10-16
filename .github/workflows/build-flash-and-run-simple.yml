@@ -23,7 +23,7 @@ jobs:
           LAGER_SECRET_TOKEN: ${{ secrets.AKBAR_SECRET_TOKEN }}
         with:
           entrypoint: /usr/local/bin/lager
-          args: connect --device stm323fx --interface stlink --transport hla_swd --speed 480 --force
+          args: connect --device stm32f3x --interface stlink --transport hla_swd --speed 480 --force
 
       - name: Flash and run
         uses: docker://lagerdata/lager-cli:v0.1.47
