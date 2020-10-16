@@ -101,6 +101,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   UnityBegin("Example Unit Test");
   DO_TEST(test_succeedsWithCondition);
+  DO_TEST(test_failsWithCondition);
   UnityEnd();
   /* USER CODE END 2 */
 
