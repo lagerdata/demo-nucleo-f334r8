@@ -24,7 +24,7 @@
 
 //-------------------------EXPORTED FUNCTIONS-------------------------------
 int32_t ledctrl_blinkled(uint32_t num_blink, uint32_t ms_blink_duration);
-int32_t ledctrl_onof(bool led_on);
+int32_t ledctrl_onoff(bool led_on);
 
 
 #endif

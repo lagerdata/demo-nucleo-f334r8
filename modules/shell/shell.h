@@ -1,12 +1,11 @@
-#ifndef _TEST_EXAMPLE_INCLUDED
-#define _TEST_EXAMPLE_INCLUDED
+#ifndef _SHELL_INCLUDED
+#define _SHELL_INCLUDED
 //-------------------------MODULES USED-------------------------------------
 
 
 
 //-------------------------DEFINITIONS AND MACORS---------------------------
 
-#define DO_TEST(name) void name(void); RUN_TEST(name);
 
 
 //-------------------------TYPEDEFS AND STRUCTURES--------------------------
@@ -14,7 +13,7 @@
 
 
 //-------------------------EXPORTED VARIABLES ------------------------------
-#ifndef _TEST_EXAMPLE_C_SRC
+#ifndef _SHELL_C_SRC
 
 
 
@@ -23,5 +22,7 @@
 
 
 //-------------------------EXPORTED FUNCTIONS-------------------------------
+void shell_init(void);
+void shell_run(void);
 
 #endif

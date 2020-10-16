@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "unity.h"
-#include "test_ledctrl.h"
+#include "test_example.h"
 #include "main_test.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -99,12 +99,8 @@ int main(void)
   MX_GPIO_Init();
   //MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  UnityBegin("modules/ledctrl.c");
-  DO_TEST(test_check_min_number_blinks);
-  DO_TEST(test_check_max_number_blinks);
-  DO_TEST(test_check_min_blink_duration);
-  DO_TEST(test_check_max_blink_duration);
-  DO_TEST(test_total_blink_length);
+  UnityBegin("Example Unit Test");
+  DO_TEST(test_succeedsWithCondition);
   UnityEnd();
   /* USER CODE END 2 */
 

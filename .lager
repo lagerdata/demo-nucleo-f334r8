@@ -2,7 +2,7 @@
 
 [DEVENV]
 image = lagerdata/devenv-cortexm-stm32
-mount_dir = /app
+mount_dir = /github/workspace
 shell = /bin/bash
-cmd.build = headless-build.sh -build demo-nucleo-f334r8 -importAll /app
+cmd.build = mkdir _build;cd _build;cmake .. -G Ninja;cmake --build .
 

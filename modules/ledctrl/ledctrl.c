@@ -58,7 +58,7 @@ int32_t ledctrl_blinkled(uint32_t num_blink, uint32_t ms_blink_duration)
 }
 
 
-int32_t ledctrl_onof(bool led_on)
+int32_t ledctrl_onoff(bool led_on)
 {
 	if(led_on){
 		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);

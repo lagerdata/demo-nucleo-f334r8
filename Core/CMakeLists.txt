@@ -13,7 +13,7 @@ target_include_directories(app PRIVATE ${CMAKE_CURRENT_LIST_DIR}/Inc)
 
 
 target_link_libraries(app stm32_drivers)
-target_link_libraries(app ledctrl)
+target_link_libraries(app shell)
 
 
 target_compile_options(app PRIVATE -mcpu=cortex-m4 -mthumb -mabi=aapcs -mfloat-abi=hard -mfpu=fpv4-sp-d16)
