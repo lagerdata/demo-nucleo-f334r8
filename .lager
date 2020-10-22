@@ -5,4 +5,8 @@ image = lagerdata/devenv-cortexm-stm32
 mount_dir = /github/workspace
 shell = /bin/bash
 cmd.build = mkdir _build;cd _build;cmake .. -G Ninja;cmake --build .
+cmd.clean = cd _build;ninja -t clean
+cmd.build-cube = headless-build.sh -build demo-nucleo-f334r8 -importAll /github/workspace
+cmd.clean-cube = rm -rf Debug;rm -rf Release;rm -rf Test
+
 
