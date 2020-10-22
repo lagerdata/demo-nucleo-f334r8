@@ -42,8 +42,8 @@ And then run:
 `lager exec clean` 
 
 Or to build this project using the STM32CUBEIDE's gcc compiler a user can define the following:  
-`lager exec --command "headless-build.sh -build demo-nucleo-f334r8 -importAll /app" --save-as stm-build`  
-Moving forward a user could then run `lager exec stm-build`  
+`lager exec --command "headless-build.sh -build demo-nucleo-f334r8 -importAll /app" --save-as build-cube`  
+Moving forward a user could then run `lager exec build-cube`  
 
 
 ## Flashing The Board
