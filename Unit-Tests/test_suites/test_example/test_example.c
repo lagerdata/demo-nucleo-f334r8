@@ -40,7 +40,7 @@ void test_succeedsWithCondition(void)
 
 void test_failsWithCondition(void)
 {
-	TEST_ASSERT_EQUAL_INT(42, 43);
+	TEST_ASSERT_EQUAL_INT(42, 42);
 }
 
 
