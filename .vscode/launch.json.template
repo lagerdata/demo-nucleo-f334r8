@@ -8,15 +8,15 @@
             "name": "(arm-none-eabi-gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "miDebuggerPath": "C:/Program Files (x86)/GNU Arm Embedded Toolchain/9 2020-q2-update/bin/arm-none-eabi-gdb.exe",
+            "miDebuggerPath": [PLACE PATH TO GDB HERE e.g. `"C:\\Program Files\\arm-none-eabi-gcc\\bin\\arm-none-eabi-gdb.exe"`],
             "targetArchitecture": "arm",
             "program": "${workspaceFolder}/_build/Core/app",
             "setupCommands": [
                 {"text": "target remote localhost:3333"},
                 {"text": "monitor reset halt"},
-                {"text": "file Y:/Projects/Lager/vms/projects/st-test/demo-nucleo-f334r8/_build/Core/app"},
+                {"text": "[PLACE FILE PATH HERE e.g. `file Y:/projects/demo-nucleo-f334r8/_build/Core/app"`]}, //NOTE: Absolute path must be used here. ${workspaceFolder} will not work properly
                 {"text": "load"},
-                {"text": "break main","ignoreFailures": true},
+                {"text": "break main"},
             ],
             "launchCompleteCommand": "None",
             "externalConsole": false,
