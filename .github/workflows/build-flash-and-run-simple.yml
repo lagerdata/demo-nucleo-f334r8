@@ -12,7 +12,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Build
-        uses: docker://lagerdata/devenv-cortexm-stm32
+        uses: docker://lagerdata/devenv-cortexm-minimal
         with:
           entrypoint: /usr/local/bin/lager
           args: exec build
