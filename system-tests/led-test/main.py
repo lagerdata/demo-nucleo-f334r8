@@ -37,7 +37,7 @@ def test_led_on(gateway, device, serial_port):
     time.sleep(0.1)
     data = serial_port.read(32)
     led_state = gateway.gpio.read(LED_PIN)
-    assert led_state == 0
+    assert led_state == 1
 
 def test_led_off(gateway, device, serial_port):
     device.run()
