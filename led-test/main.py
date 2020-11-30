@@ -24,9 +24,9 @@ def gateway():
 
 @pytest.fixture(scope='module')
 def device(gateway):
-    device = gateway.connect("stm32l0", interface="stlink", transport="hla_swd", speed="480", force=True)
+    device = gateway.connect("stm32f3x", interface="stlink", transport="hla_swd", speed="480", force=True)
     device.reset(halt=True)
-    hexfiles = [lager.Hexfile("demo-nucleo-l053r8.hex")]
+    hexfiles = [lager.Hexfile("app.hex")]
     device.flash(hexfiles=hexfiles)
     yield device
     device.close()
